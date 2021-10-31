@@ -36,6 +36,7 @@ npm run test
 2. Now time to make them pass! Firstly Load the transactions from the server, using Redux Toolkit
     * Start off by opening [transactions.js](./src/store/transactions.js)
     * Address the TODO comments on line 38
+    * If you get stuck the solution is [here](https://github.com/nighk/brilliant-banking-ui-devoxx/blob/solution/src/store/transactions.js#L40-L41)
 
 3. Next ensure the Pact tests pass, in particular the [transactions.test.js](./src/pact/transactions.test.js), you can run that specific test like this:
 ```
@@ -48,6 +49,7 @@ npm run test transactions.test.js
     * [Overview.js](./src/views/Overview.js) has a loop to display the accounts, you can use similar logic, however you will need to do a little more as the transactions are grouped by month
     * You should make a new "TransactionCard" component, this will be similar to the [AccountCard.js](./src/components/AccountCard.js)
     * **Tip:** Start by getting something simple on the page, then go from there!
+    * If you get stuck the solution is [here](https://github.com/nighk/brilliant-banking-ui-devoxx/blob/solution/src/views/AccountDetails.js#L58-L80), with a new TransactionCard component [here](https://github.com/nighk/brilliant-banking-ui-devoxx/blob/solution/src/components/TransactionCard.js)
 
 5. Once you are happy you can stop the Pact mock server and run the real one!
     * Start the backend server, following the [brilliant-banking-server-devoxx](https://github.com/nighk/brilliant-banking-server-devoxx) README
@@ -70,6 +72,8 @@ Anything you make should be a new component, that is opened when a user clicks o
 * accountBalance (after transaction)
 * title
 * reference
+
+A possible solution is [here](https://github.com/nighk/brilliant-banking-ui-devoxx/blob/solution/src/views/AccountDetails.js#L82-L92), with a new TransactionDetailsPopup component [here](https://github.com/nighk/brilliant-banking-ui-devoxx/blob/solution/src/components/TransactionDetailsPopup.js)
 
 ## 3. Further Improvements
 
@@ -108,3 +112,5 @@ npm run test
 ```
 
 6. This has now verified that the server provides the correct endpoints and behaviour for the UI. This can be automated with a CI tool to provide confidence in the interactions between your microservices!
+
+![Pact Flow Contract](docs/images/PactFlowCOntract.png)
