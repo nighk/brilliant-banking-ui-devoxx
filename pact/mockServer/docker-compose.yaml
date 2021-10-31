@@ -1,0 +1,8 @@
+services:
+  bb-server-mock:
+    image: pactfoundation/pact-stub-server
+    ports:
+      - "8080:8080"
+    volumes:
+      - ../pacts:/app/pacts
+    command: "--dir /app/pacts --port 8080"

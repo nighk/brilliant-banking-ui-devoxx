@@ -1,0 +1,257 @@
+{
+  "consumer": {
+    "name": "Brilliant Banking UI Devoxx"
+  },
+  "provider": {
+    "name": "Brilliant Banking Server Devoxx"
+  },
+  "interactions": [
+    {
+      "description": "a request to check the login status of the user",
+      "providerState": "a user is logged in",
+      "request": {
+        "method": "GET",
+        "path": "/user",
+        "headers": {
+          "Accept": "application/json"
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Origin": "http://localhost:3000",
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "body": {
+          "username": "Pact Test"
+        }
+      }
+    },
+    {
+      "description": "a request for all accounts",
+      "providerState": "several accounts exist",
+      "request": {
+        "method": "GET",
+        "path": "/accounts",
+        "headers": {
+          "Accept": "application/json"
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Origin": "http://localhost:3000",
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "body": {
+          "0001": {
+            "name": "Main Account",
+            "type": "Current Account",
+            "balance": 7376.78,
+            "interestRate": 0.01
+          },
+          "0002": {
+            "name": "Holiday Fund",
+            "type": "2 Year Fixed Saver",
+            "balance": 4000,
+            "interestRate": 2
+          },
+          "0003": {
+            "name": "Secret Account",
+            "type": "ISA",
+            "balance": 10500,
+            "interestRate": 1.1
+          }
+        }
+      }
+    },
+    {
+      "description": "a request for transactions",
+      "providerState": "several transactions exist for an account",
+      "request": {
+        "method": "GET",
+        "path": "/accountDetails/0001",
+        "headers": {
+          "Accept": "application/json"
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Origin": "http://localhost:3000",
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "body": [
+          {
+            "type": "out",
+            "dateTime": "2020-10-25T12:00:00Z",
+            "amount": 75,
+            "accountBalance": 7376.78,
+            "title": "NPower",
+            "reference": "Monthly Electric Bill"
+          },
+          {
+            "type": "out",
+            "dateTime": "2020-10-20T09:00:00Z",
+            "amount": 25.67,
+            "accountBalance": 5604.1,
+            "title": "Severn Trent",
+            "reference": "Monthly Water Bill"
+          },
+          {
+            "type": "in",
+            "dateTime": "2020-10-21T10:45:47Z",
+            "amount": 2347.68,
+            "accountBalance": 7951.78,
+            "title": "Capgemini",
+            "reference": "Salary"
+          },
+          {
+            "type": "in",
+            "dateTime": "2020-10-01T00:00:00Z",
+            "amount": 0.37,
+            "accountBalance": 5721.02,
+            "title": "Interest",
+            "reference": "At 0.01% APR"
+          },
+          {
+            "type": "out",
+            "dateTime": "2020-10-13T12:31:57Z",
+            "amount": 33.57,
+            "accountBalance": 5629.77,
+            "title": "Pizza Hut",
+            "reference": "Lunch with colleagues :-)"
+          },
+          {
+            "type": "out",
+            "dateTime": "2020-10-08T18:23:43Z",
+            "amount": 57.68,
+            "accountBalance": 5663.34,
+            "title": "Tesco",
+            "reference": "Shopping, not sure why this is only once a month..."
+          },
+          {
+            "type": "out",
+            "dateTime": "2020-10-22T00:00:00Z",
+            "amount": 500,
+            "accountBalance": 7451.78,
+            "title": "Savings Account",
+            "reference": "Regular Savings Deposit"
+          },
+          {
+            "type": "out",
+            "dateTime": "2020-09-25T12:00:00Z",
+            "amount": 75,
+            "accountBalance": 5732.32,
+            "title": "NPower",
+            "reference": "Monthly Electric Bill"
+          },
+          {
+            "type": "out",
+            "dateTime": "2020-09-20T09:00:00Z",
+            "amount": 25.67,
+            "accountBalance": 3959.64,
+            "title": "Severn Trent",
+            "reference": "Monthly Water Bill"
+          },
+          {
+            "type": "in",
+            "dateTime": "2020-09-21T10:45:47Z",
+            "amount": 2347.68,
+            "accountBalance": 6307.22,
+            "title": "Capgemini",
+            "reference": "Salary"
+          },
+          {
+            "type": "in",
+            "dateTime": "2020-09-01T00:00:00Z",
+            "amount": 0.56,
+            "accountBalance": 4050.78,
+            "title": "Interest",
+            "reference": "At 0.01% APR"
+          },
+          {
+            "type": "out",
+            "dateTime": "2020-09-26T12:51:01Z",
+            "amount": 11.67,
+            "accountBalance": 5720.65,
+            "title": "KFC",
+            "reference": "Lunch by myself :-("
+          },
+          {
+            "type": "out",
+            "dateTime": "2020-09-06T21:47:09Z",
+            "amount": 65.47,
+            "accountBalance": 3985.31,
+            "title": "Tesco",
+            "reference": "Shopping, not sure why this is only once a month..."
+          },
+          {
+            "type": "out",
+            "dateTime": "2020-09-22T00:00:00Z",
+            "amount": 500,
+            "accountBalance": 5807.32,
+            "title": "Savings Account",
+            "reference": "Regular Savings Deposit"
+          },
+          {
+            "type": "out",
+            "dateTime": "2020-08-25T12:00:00Z",
+            "amount": 75,
+            "accountBalance": 4050.22,
+            "title": "NPower",
+            "reference": "Monthly Electric Bill"
+          },
+          {
+            "type": "out",
+            "dateTime": "2020-08-20T09:00:00Z",
+            "amount": 25.67,
+            "accountBalance": 2343.01,
+            "title": "Severn Trent",
+            "reference": "Monthly Water Bill"
+          },
+          {
+            "type": "in",
+            "dateTime": "2020-08-21T10:45:47Z",
+            "amount": 2347.68,
+            "accountBalance": 4690.69,
+            "title": "Capgemini",
+            "reference": "Salary"
+          },
+          {
+            "type": "in",
+            "dateTime": "2020-08-01T00:00:00Z",
+            "amount": 0.45,
+            "accountBalance": 2368.68,
+            "title": "Interest",
+            "reference": "At 0.01% APR"
+          },
+          {
+            "type": "out",
+            "dateTime": "2020-08-21T19:33:07Z",
+            "amount": 65.47,
+            "accountBalance": 4625.22,
+            "title": "Tesco",
+            "reference": "Shopping, not sure why this is only once a month..."
+          },
+          {
+            "type": "out",
+            "dateTime": "2020-08-22T00:00:00Z",
+            "amount": 500,
+            "accountBalance": 4125.22,
+            "title": "Savings Account",
+            "reference": "Regular Savings Deposit"
+          }
+        ]
+      }
+    }
+  ],
+  "metadata": {
+    "pactSpecification": {
+      "version": "2.0.0"
+    }
+  }
+}
