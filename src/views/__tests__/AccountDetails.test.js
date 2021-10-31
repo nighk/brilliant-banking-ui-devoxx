@@ -44,8 +44,22 @@ describe("AccountDetails.js", () => {
     );
   };
 
-  it("Renders the back button", () => {
+  it("Renders transactions grouped by month", () => {
     setup();
-    expect(screen.queryByTestId("account-details-back-button")).toBeInTheDocument()
+
+    expect(screen.getByTestId("account-details-month-Aug")).toHaveTextContent("Aug");
+    const augTitle = screen.getByText(/Aug Transaction Title/i);
+    expect(augTitle).toBeInTheDocument();
+
+    expect(screen.getByTestId("account-details-month-Sep")).toHaveTextContent("Sep");
+    const sepTitle = screen.getByText(/Sep Transaction Title/i);
+    expect(sepTitle).toBeInTheDocument();
+
+    expect(screen.queryByTestId("no-transactions")).not.toBeInTheDocument()
+  });
+
+  it("Renders a no transactions message", () => {
+    setup({});
+    expect(screen.queryByTestId("no-transactions")).toBeInTheDocument();
   });
 });

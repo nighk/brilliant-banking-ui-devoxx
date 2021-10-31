@@ -7,6 +7,8 @@ import { navigate } from "@reach/router";
 import { makeStyles } from "@material-ui/core/styles";
 
 import { getTransactions } from "../store/transactions";
+import TransactionCard from "../components/TransactionCard";
+import TransactionDetailsPopup from "../components/TransactionDetailsPopup";
 import consts from "../consts";
 
 const useStyles = makeStyles((theme) => ({
@@ -20,7 +22,16 @@ const useStyles = makeStyles((theme) => ({
 const AccountDetails = ({accountId}) => {
   const dispatch = useDispatch();
   const classes = useStyles();
+  const [selectedTransaction, setSelectedTransaction] = useState();
   const transactions = useSelector(state => state.transactions);
+
+  const handleCardClick = transaction => {
+    setSelectedTransaction(transaction);
+  }
+
+  const handlePopupClose = () => {
+    setSelectedTransaction(null);
+  }
 
   if(!transactions.hasLoaded && !transactions.loading) {
     dispatch(getTransactions(accountId));
@@ -44,9 +55,41 @@ const AccountDetails = ({accountId}) => {
             Back to Account Overview
           </Button>
 
-          {/* TODO */}
-          <Typography data-testid="no-transactions">Replace Me!</Typography>
-  
+          {Object.keys(transactions.list).length === 0 ?
+            <Typography data-testid="no-transactions">No transactions to show</Typography>
+          :
+            Object.entries(transactions.list).map(([key, transactionGroup]) => (
+              <div key={`div-${key}`}>
+                <Typography key={`Typography-${key}`} variant="h4" data-testid={`account-details-month-${key}`}>
+                  {key}
+                </Typography>
+                <Divider key={`Divider-${key}`} />
+                {transactionGroup.map(transaction => (
+                  <TransactionCard
+                    key={transaction.dateTime}
+                    type={transaction.type}
+                    amount={transaction.amount}
+                    accountBalance={transaction.accountBalance}
+                    dateTime={transaction.dateTime}
+                    title={transaction.title}
+                    handleClick={() => handleCardClick(transaction)}
+                  />
+                ))}
+              </div>
+            ))
+          }
+
+          {selectedTransaction &&
+            <TransactionDetailsPopup
+              type={selectedTransaction.type}
+              dateTime={selectedTransaction.dateTime}
+              amount={selectedTransaction.amount}
+              accountBalance={selectedTransaction.accountBalance}
+              title={selectedTransaction.title}
+              reference={selectedTransaction.reference}
+              handleClose={handlePopupClose}
+            />
+          }
         </Container>
       </Box>
     );

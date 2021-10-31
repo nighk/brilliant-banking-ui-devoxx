@@ -1,7 +1,8 @@
 import moment from "moment";
 
-export const sortTransactionsByDate = transactions =>
+export const sortTransactionsByDate = transactions => {
   transactions.sort((a, b) => moment(a.dateTime).isBefore(b.dateTime) ? 1 : -1);
+}
 
 export const groupTransactionsByMonth = transactions => {
   const groupedTransactions = transactions.reduce((accumulator, elem) => {
