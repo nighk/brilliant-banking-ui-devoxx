@@ -6,6 +6,7 @@
 * Use hooks to give you stateful behaviour
 * Global state libraries can be used to save you from props tree trap!
 * There are loads of libraries out there, always google before implementing something yourself ;-)
+    * FOr example this UI uses the material-ui package for all its styling
 
 ## Component Tree
 A React Component Tree might look like this:

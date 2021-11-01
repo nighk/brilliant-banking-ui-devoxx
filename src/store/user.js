@@ -42,7 +42,7 @@ export const checkLogin = () => async dispatch => {
 
 export const login = ({ username, password }) => async dispatch => {
   try {
-    await api.post("/login", { username, password });
+    await api.post(`${process.env.REACT_APP_SERVER_HOSTNAME}/login`, { username, password });
     dispatch(loginSuccess(username));
     navigate(consts.overviewPath);
   } catch (e) {

@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import moment from "moment";
 import api from "../utils/api";
 import { sortTransactionsByDate, groupTransactionsByMonth } from "../utils/dateUtils";
 

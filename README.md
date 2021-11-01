@@ -19,7 +19,7 @@ The necessary variables are defaulted in the `.env` and do not need to be change
 
 # A Few Concepts
 * [React Overview](docs/ReactOverview.md)
-* [Pact Overview]()
+* [Pact Overview](docs/PactOverview.md)
 
 # Challenges
 ## 1. Display Transactions Sorted & Grouped by Month
@@ -35,7 +35,7 @@ npm run test
 
 2. Now time to make them pass! Firstly Load the transactions from the server, using Redux Toolkit
     * Start off by opening [transactions.js](./src/store/transactions.js)
-    * Address the TODO comments on line 38
+    * Address the TODO comments on line 39
     * If you get stuck the solution is [here](https://github.com/nighk/brilliant-banking-ui-devoxx/blob/solution/src/store/transactions.js#L40-L41)
 
 3. Next ensure the Pact tests pass, in particular the [transactions.test.js](./src/pact/transactions.test.js), you can run that specific test like this:
@@ -45,8 +45,8 @@ npm run test transactions.test.js
 
 4. Now create the Account Details view to display the transactions, this will involve making a new React Component
     * Open [AccountDetails.js](./src/views/AccountDetails.js)
-    * You need to replace the placeholder on line 48 with the account transactions
-    * [Overview.js](./src/views/Overview.js) has a loop to display the accounts, you can use similar logic, however you will need to do a little more as the transactions are grouped by month
+    * An initial map loop is already in place, you need to replace the placeholder on line 47 with the account transactions
+    * [Overview.js](./src/views/Overview.js) has a similar loop to display the accounts, however you will need to do a little more as the transactions are grouped by month
     * You should make a new "TransactionCard" component, this will be similar to the [AccountCard.js](./src/components/AccountCard.js)
     * **Tip:** Start by getting something simple on the page, then go from there!
     * If you get stuck the solution is [here](https://github.com/nighk/brilliant-banking-ui-devoxx/blob/solution/src/views/AccountDetails.js#L58-L80), with a new TransactionCard component [here](https://github.com/nighk/brilliant-banking-ui-devoxx/blob/solution/src/components/TransactionCard.js)
@@ -113,4 +113,4 @@ npm run test
 
 6. This has now verified that the server provides the correct endpoints and behaviour for the UI. This can be automated with a CI tool to provide confidence in the interactions between your microservices!
 
-![Pact Flow Contract](docs/images/PactFlowCOntract.png)
+![Pact Flow Contract](docs/images/PactFlowContract.png)
