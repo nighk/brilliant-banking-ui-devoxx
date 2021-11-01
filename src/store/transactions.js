@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
-import moment from "moment";
 import api from "../utils/api";
+import { sortTransactionsByDate, groupTransactionsByMonth } from "../utils/dateUtils";
 
 const slice = createSlice({
   name: "transactions",
@@ -34,11 +34,15 @@ const { populateList, clearList, setLoading, setHasLoaded } = slice.actions;
 export const getTransactions = accountId => async dispatch => {
   try {
     dispatch(setLoading(true));
+    const res = await api.get(`${process.env.REACT_APP_SERVER_HOSTNAME}/accountDetails/${accountId}`);
 
     // TODO: 
-    // You need to pull the transactions from the server, the URL you need is: ${process.env.REACT_APP_SERVER_HOSTNAME}/accountDetails/${accountId}
-    // Then sort them by date using the sortTransactionsByDate function from ../utils/dateUtils.js 
-    // Then group them by month using the groupTransactionsByMonth also from dateUtils.js 
+    // You need to use the result from the api call above, the transactions are under res.data
+    // Take a look at the console.log within the browser console to see the structure
+    // Then sort the transactions by date using the sortTransactionsByDate function from ../utils/dateUtils.js 
+    // Then group them by month using the groupTransactionsByMonth also from dateUtils.js
+    // The functions you need are already imported at the top of the file
+    console.log(res.data);
     let groupedTransactions = {};
 
     dispatch(populateList(groupedTransactions));

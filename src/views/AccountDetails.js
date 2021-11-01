@@ -1,6 +1,5 @@
-import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { LinearProgress, Box, Typography, Container, Button, Divider } from "@material-ui/core";
+import { LinearProgress, Box, Typography, Container, Button } from "@material-ui/core";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import PropTypes from "prop-types";
 import { navigate } from "@reach/router";
@@ -44,8 +43,16 @@ const AccountDetails = ({accountId}) => {
             Back to Account Overview
           </Button>
 
-          {/* TODO */}
-          <Typography data-testid="no-transactions">Replace Me!</Typography>
+          {Object.entries(transactions.list).map(([month, transactions]) => {
+            // TODO
+            // Take a look at the console.log within the browser console to see the structure
+            console.log("Month: ", month);
+            console.log("Transactions: ", transactions)
+
+            return (
+              <Typography key={month}>Replace Me!</Typography>
+            )
+          })}
   
         </Container>
       </Box>
